@@ -8,6 +8,7 @@ import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.net.Uri;
 import android.os.Build;
+import android.os.Bundle;
 import android.os.Environment;
 import android.text.Html;
 import android.util.Base64;
@@ -692,6 +693,17 @@ public class SocialSharing extends CordovaPlugin {
           _callbackContext.success();
       }
     }
+  }
+
+  @Override
+  public Bundle onSaveInstanceState() {
+    Bundle state = new Bundle();
+    return state;
+  }
+
+  @Override
+  public void onRestoreStateForActivityResult(Bundle state, CallbackContext callbackContext) {
+    this._callbackContext = callbackContext;
   }
 
   private void createOrCleanDir(final String downloadDir) throws IOException {
