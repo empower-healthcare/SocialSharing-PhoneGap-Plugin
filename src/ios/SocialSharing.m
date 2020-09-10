@@ -30,15 +30,8 @@ static NSString *const kShareOptionUrl = @"url";
 }
 
 - (NSString*)getIPadPopupCoordinates {
-  if (_popupCoordinates != nil) {
-    return _popupCoordinates;
-  }
-  if ([self.webView respondsToSelector:@selector(stringByEvaluatingJavaScriptFromString:)]) {
-    return [(UIWebView*)self.webView stringByEvaluatingJavaScriptFromString:@"window.plugins.socialsharing.iPadPopupCoordinates();"];
-  } else {
-    // prolly a wkwebview, ignoring for now
-    return nil;
-  }
+  // see https://github.com/EddyVerbruggen/SocialSharing-PhoneGap-Plugin/issues/1052
+  return nil;
 }
 
 - (void)setIPadPopupCoordinates:(CDVInvokedUrlCommand*)command {
